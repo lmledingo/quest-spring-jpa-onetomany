@@ -1,9 +1,8 @@
 package com.wildcodeschool.wildandwizard.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jdk.jfr.Category;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -17,7 +16,20 @@ public class Wizard {
     private Date birthday;
     private String birthPlace;
     private String biography;
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
     private boolean muggle;
+
+   @ManyToOne
+   @JoinColumn(name = "school_id")
+   private School school;
 
     public Wizard() {
     }
